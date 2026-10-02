@@ -1,11 +1,11 @@
 # Project State
 
-Last updated: 2026-10-02T14:00:00Z
+Last updated: 2026-10-02T14:04:37Z
 
 ## Objective and status
 
 - Objective: ship the Path A campaign rail for the Tameion Agents Hackathon.
-- Status: rail and demo verified; delivery checkpoint/upload integrity verification in progress.
+- Status: COMPLETE — authorized Path A rail shipped and verified. Implementation stopped.
 - Scope: Arc testnet only; test USDC has no cash value.
 
 ## Workspace
@@ -13,6 +13,7 @@ Last updated: 2026-10-02T14:00:00Z
 - Repository: `/home/rouma/panelpay`
 - Branch: `main`
 - Source checkpoint: `db12cead717a03b5d3b25e36edc988e7d62e2ff1` (verified on `origin/main`)
+- Verified proof/demo checkpoint: `c2486d4d787812717509ceef086abbceb6124252`, present on `origin/main`. This final handoff update follows that checkpoint; resolve its own commit with `git rev-parse HEAD`.
 - Remote: `https://github.com/dmetagame/panelpay`, upstream `origin/main`
 - Live URL: `https://panelpay-ruby.vercel.app/`
 
@@ -44,7 +45,7 @@ Last updated: 2026-10-02T14:00:00Z
 - Desktop 1440px and mobile 390px verification: no page errors or horizontal overflow. Fresh public receipt read returns HTTP 200 and confirmed payment.
 - Full on-chain ledger across revisions: 6 internal campaigns, 9 applications, 6 committed decisions, 2 confirmed fixture payments, 0.020000 test USDC. All independent headline totals are zero.
 - Narrated Remotion demo: 122.048 seconds, 1920×1080, 30fps H.264/AAC; complete FFmpeg decode, audio/caption boundaries, and encoded scene-end checks pass. Inspectable frames, thumbnail, editable source, narration, transcript, and subtitles are preserved.
-- Demo SHA-256: `99874e677032db6567bf444c6d63fb707c05d2e43d5bd7b677dffe023d09daa0`; 12,311,656 bytes. Public download verification pending upload.
+- Demo SHA-256: `99874e677032db6567bf444c6d63fb707c05d2e43d5bd7b677dffe023d09daa0`; 12,311,656 bytes. Public GitHub download returns HTTP 200 and matches both hash and byte count.
 - `npm audit --omit=dev`: zero vulnerabilities; complete root dependency audit also zero after compatible fixes.
 
 ## Decisions and rejected alternatives
@@ -69,9 +70,18 @@ Last updated: 2026-10-02T14:00:00Z
 
 ## Next actions
 
-1. Push the final proof/demo package and verify the downloaded MP4 hash.
-2. Record final remote verification and clean scoped temporary files.
-3. Stop implementation. Future independent traction requires a real independent brief, counterparties, and documented verification before headline claims; no messages have been sent.
+1. No remaining implementation work in the authorized scope. Public rail, proof, demo, source, and durable handoff are delivered.
+2. Future independent traction requires a real independent brief, counterparties, and documented verification before headline claims; no messages have been sent.
+3. Before future edits, inspect this state, `git status`, current remote/head, `proof/deployment.json`, and the proof ledger. Preserve archived evidence and published transaction links.
+
+## Session handoff
+
+- Public app: `https://panelpay-ruby.vercel.app/`.
+- Current verified receipt: `https://panelpay-ruby.vercel.app/runs/2/0xff9b5560736c455424b7a4862927dd1de26b25aab056220b5be85c1e6638d13b`.
+- Demo: `https://raw.githubusercontent.com/dmetagame/panelpay/main/demo-video/panelpay-demo.mp4`.
+- README is the pitch; `DEMO.md` is the prefunded reviewer path; `TRACTION.md` and `proof/ledger.json` record all internal activity separately from independent headline totals.
+- Local dev server stopped. Scoped temporary audit/render/inspection files are disposable and cleaned during the final handoff. Editable assets and test evidence remain in Git.
+- Secrets remain only in ignored local configuration/Vercel; no credential values are stored in source, state, proof, or screenshots.
 
 ## Change log
 
@@ -79,3 +89,4 @@ Last updated: 2026-10-02T14:00:00Z
 - 2026-10-02: Recovered after server restart; implemented signed campaign/application/owner confirmation, agent endpoint, public receipts, and campaign UI. Passed 3 policy tests, 16 contract tests, and production build; deployed the contract on Arc testnet.
 - 2026-10-02: Published GitHub checkpoint `cfdd1e2` and Vercel app; verified the first real internal payment. Added automatic settlement, on-chain admission reservations, exact-block receipts, RPC fallback/batching, and safe request recovery. Seventeen contract tests, three policy tests, TypeScript/build and dependency audit pass.
 - 2026-10-02: Source checkpoint `db12cea` pushed and verified. Final public loop passed; current runtime and five deployed revert cases verified. Exported all internal activity into the dated ledger and produced/decoded/inspected the 2:02 narrated demo.
+- 2026-10-02T14:04:37Z: Proof/demo checkpoint `c2486d4` pushed and verified. Public MP4 download hash and length match the encoded export. Completed the authorized rail and final handoff; independent traction remains zero and Circle DCW remains unconfigured.

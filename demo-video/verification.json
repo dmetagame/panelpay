@@ -98,5 +98,7 @@
       "file": "verification-frames/close-ending.jpg"
     }
   ],
-  "downloadIntegrity": "pending upload"
+  "downloadIntegrity": "PASS",
+  "downloadUrl": "https://raw.githubusercontent.com/dmetagame/panelpay/main/demo-video/panelpay-demo.mp4",
+  "downloadVerifiedAt": "2026-10-02T14:04:37.669Z"
 }
