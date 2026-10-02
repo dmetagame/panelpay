@@ -22,6 +22,7 @@ contract PanelPay {
         uint96 fixedAmount;
         uint96 cap;
         uint96 spent;
+        uint96 reserved;
         uint64 deadline;
         bool active;
     }
@@ -32,6 +33,7 @@ contract PanelPay {
         Decision decision;
         uint8 completion; // 0 unreviewed, 1 done, 2 not done
         bool paid;
+        uint64 paidBlock;
     }
 
     IERC20 public immutable usdc;
@@ -73,18 +75,9 @@ contract PanelPay {
         string rationale
     );
     event CompletionRecorded(
-        uint256 indexed campaignId,
-        bytes32 indexed requestId,
-        bool done,
-        bytes32 proofHash,
-        address owner
+        uint256 indexed campaignId, bytes32 indexed requestId, bool done, bytes32 proofHash, address owner
     );
-    event Paid(
-        uint256 indexed campaignId,
-        bytes32 indexed requestId,
-        address indexed payee,
-        uint96 amount
-    );
+    event Paid(uint256 indexed campaignId, bytes32 indexed requestId, address indexed payee, uint96 amount);
     event CampaignClosed(uint256 indexed campaignId, uint96 refunded);
 
     error UnauthorizedCaller();
@@ -146,6 +139,7 @@ contract PanelPay {
             fixedAmount: fixedAmount,
             cap: cap,
             spent: 0,
+            reserved: 0,
             deadline: deadline,
             active: true
         });
@@ -177,7 +171,8 @@ contract PanelPay {
             evidenceHash: evidenceHash,
             decision: Decision.None,
             completion: 0,
-            paid: false
+            paid: false,
+            paidBlock: 0
         });
         applicationMetadata[campaignId][requestId] = metadata;
         if (keccak256(bytes(metadata)) != evidenceHash) revert BadArguments();
@@ -199,6 +194,12 @@ contract PanelPay {
             revert DecisionLocked();
         }
         application.decision = decision;
+        if (decision == Decision.Admit) {
+            if (uint256(campaign.spent) + campaign.reserved + campaign.fixedAmount > campaign.cap) {
+                revert CapExceeded();
+            }
+            campaign.reserved += campaign.fixedAmount;
+        }
         decisionMetadata[campaignId][requestId] = rationale;
         emit DecisionRecorded(campaignId, requestId, decision, keccak256(bytes(rationale)), rationale);
     }
@@ -210,7 +211,9 @@ contract PanelPay {
         bytes32 proofHash,
         uint256 nonce
     ) public view returns (bytes32) {
-        return keccak256(abi.encode(address(this), block.chainid, campaignId, requestId, done, proofHash, nonce));
+        return keccak256(
+            abi.encode(address(this), block.chainid, campaignId, requestId, done, proofHash, nonce)
+        );
     }
 
     function recordCompletion(
@@ -228,11 +231,22 @@ contract PanelPay {
         if (application.paid) revert Replay();
         if (nonce != ownerNonces[campaign.owner]) revert InvalidOwnerSignature();
         bytes32 signed = keccak256(
-            abi.encodePacked("\x19Ethereum Signed Message:\n32", completionDigest(campaignId, requestId, done, proofHash, nonce))
+            abi.encodePacked(
+                "\x19Ethereum Signed Message:\n32",
+                completionDigest(campaignId, requestId, done, proofHash, nonce)
+            )
         );
         if (_recover(signed, ownerSignature) != campaign.owner) revert InvalidOwnerSignature();
 
         ownerNonces[campaign.owner] = nonce + 1;
+        if (application.decision != Decision.Admit) revert DecisionNotAdmitted();
+        if (!done && application.completion != 2) campaign.reserved -= campaign.fixedAmount;
+        if (done && application.completion == 2) {
+            if (uint256(campaign.spent) + campaign.reserved + campaign.fixedAmount > campaign.cap) {
+                revert CapExceeded();
+            }
+            campaign.reserved += campaign.fixedAmount;
+        }
         application.completion = done ? 1 : 2;
         completionMetadata[campaignId][requestId] = proof;
         emit CompletionRecorded(campaignId, requestId, done, proofHash, campaign.owner);
@@ -256,7 +270,9 @@ contract PanelPay {
         if (uint256(campaign.spent) + suppliedAmount > campaign.cap) revert CapExceeded();
 
         application.paid = true;
+        application.paidBlock = uint64(block.number);
         campaign.spent += suppliedAmount;
+        campaign.reserved -= suppliedAmount;
         if (campaign.spent == campaign.cap) campaign.active = false;
 
         _safeTransfer(suppliedPayee, suppliedAmount);
@@ -276,7 +292,11 @@ contract PanelPay {
         return campaigns[campaignId];
     }
 
-    function getApplication(uint256 campaignId, bytes32 requestId) external view returns (Application memory) {
+    function getApplication(uint256 campaignId, bytes32 requestId)
+        external
+        view
+        returns (Application memory)
+    {
         return applications[campaignId][requestId];
     }
 

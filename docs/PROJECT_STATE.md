@@ -1,19 +1,20 @@
 # Project State
 
-Last updated: 2026-10-02 10:00 WAT
+Last updated: 2026-10-02 15:30 WAT
 
 ## Objective and status
 
 - Objective: ship the Path A campaign rail for the Tameion Agents Hackathon.
-- Status: local application implemented and contract deployed; browser/live deployment verification pending.
+- Status: rail deployed publicly; final fresh-browser verification and updated demo export in progress.
 - Scope: Arc testnet only; test USDC has no cash value.
 
 ## Workspace
 
 - Repository: `/home/rouma/panelpay`
 - Branch: `main`
-- Commit: no commit yet
-- Remote: none yet; intended `dmetagame/panelpay`
+- Commit: `cfdd1e2dc53550458706ec7edc42cabed91d3bd6` (first application checkpoint, verified on remote)
+- Remote: `https://github.com/dmetagame/panelpay`, upstream `origin/main`
+- Live URL: `https://panelpay-ruby.vercel.app/`
 
 ## Product boundary
 
@@ -33,10 +34,13 @@ Last updated: 2026-10-02 10:00 WAT
 ## Verification
 
 - `npm run test`: 3 policy/traction tests pass.
-- `forge test -vv`: 16 settlement invariant tests pass.
+- `forge test -vv`: 17 settlement invariant tests pass, including admission reservation/release and cap enforcement.
 - `npm run build`: TypeScript and production Vite build pass.
-- Arc deployment: chain 5042002, contract `0xda1624101396074a25c9a34a6bfe051a4f878061`, executor `0xa9916Ee933748a07A56017C948e9A01cF4AdABd6`.
-- Deployment transaction: `0x8aa47ca2993d265c9b3632e84a2310872c232052d510d2a13bf2991551c7e8bd`; public details in `proof/deployment.json`.
+- Arc deployment: chain 5042002, current contract `0xfedb374bbb6e157505e50c5d88d376ee5fd1e50a`, executor `0xa9916Ee933748a07A56017C948e9A01cF4AdABd6`.
+- Current deployment: `0xc5e4e59b058d4f83e6c295a7f5822f929a3fe4b4316bfc493c217674bcb4cd0e`; public details in `proof/deployment.json`.
+- First complete internal loop: confirmed 0.01 test-USDC transfer `0x675cd0168d30da980debd2a6656d8ccd0453fe0ca752782d137717d1e764db13`; archived under `proof/archive-v1/`. No independent activity.
+- First deployed runtime matched compiled source; 5 deployed read-only revert checks passed. Final-version proof remains to refresh.
+- `npm audit --omit=dev`: zero vulnerabilities; complete root dependency audit also zero after compatible fixes.
 
 ## Decisions and rejected alternatives
 
@@ -44,22 +48,29 @@ Last updated: 2026-10-02 10:00 WAT
 - Owner completion uses a signed digest relayed by the executor, avoiding a faucet requirement for owners.
 - A stated Arc testnet signer is permitted initially; Circle Developer-Controlled Wallet support can replace it without changing contract authority.
 - No mainnet, USYC, Gateway, x402, ERP, or second product.
+- Admission now reserves budget on-chain, preventing concurrent promises against the same funds. Not done releases the reservation.
+- Owner-confirmed done automatically settles; a manual payment control is recovery only.
+- Each payment records its block for exact receipt lookup. Official RPC fallback endpoints and multicall reduce read pressure.
+- Request retries reuse signed terms/request identifiers. Completion retries return the existing matching confirmation; settlement remains idempotent.
 
 ## Blockers and external dependencies
 
 - The local `arc-canteen` executable points to a removed Python environment; direct Arc RPC remains available.
 - Arc deployment and test-USDC funding are verified. Circle DCW is not configured; the app explicitly uses a stated testnet signer and makes no Circle Wallets integration claim.
-- Live URL and complete browser/payment loop remain to verify.
+- Public ESM startup failure was repaired with explicit module extensions. Public RPC throttling was repaired with multicall and official fallback endpoints.
+- Chromium in this environment reported `ERR_NETWORK_CHANGED` before reaching Vercel. Final verification uses HTTP/1.1 browser flags and bounded request recovery, without wallet/RPC interception.
+- Independent traction remains zero; no recruitment or external messages were sent.
 - Restart recovery: the dependency install had completed; no commits or remote existed. Disk exhaustion was resolved by removal of reproducible npm cache/logs. No project/user source was removed.
 
 ## Next actions
 
-1. Verify the browser loop against the live Arc contract.
-2. Publish the scoped checkpoint to GitHub and deploy to Vercel.
-3. Verify public receipts and record internal proof separately from independent traction.
-4. Produce the narrated demo and final handoff.
+1. Run the final public browser loop and refresh deployed source/revert verification.
+2. Update `proof/PROOF.md` and `TRACTION.md` with dated internal evidence.
+3. Finish the editable narrated demo, check encoded frames/decoding and download integrity.
+4. Push the final scoped checkpoint and verify remote/repository cleanliness.
 
 ## Change log
 
 - 2026-10-02: Initialized the project and drafted the onchain authorization boundary from the frozen Path A spec.
 - 2026-10-02: Recovered after server restart; implemented signed campaign/application/owner confirmation, agent endpoint, public receipts, and campaign UI. Passed 3 policy tests, 16 contract tests, and production build; deployed the contract on Arc testnet.
+- 2026-10-02: Published GitHub checkpoint `cfdd1e2` and Vercel app; verified the first real internal payment. Added automatic settlement, on-chain admission reservations, exact-block receipts, RPC fallback/batching, and safe request recovery. Seventeen contract tests, three policy tests, TypeScript/build and dependency audit pass.

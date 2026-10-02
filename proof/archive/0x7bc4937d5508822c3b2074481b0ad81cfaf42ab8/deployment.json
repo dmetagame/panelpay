@@ -1,0 +1,12 @@
+{
+  "chainId": 5042002,
+  "disclaimer": "test USDC, no cash value",
+  "contract": "0x7bc4937d5508822c3b2074481b0ad81cfaf42ab8",
+  "executor": "0xa9916Ee933748a07A56017C948e9A01cF4AdABd6",
+  "signer": "stated Arc testnet signer",
+  "transactionHash": "0xf319b78bc063b3c383e9564ce5f302bbc3bfb5bfc9e523e32c8d481fa8ca8898",
+  "block": "65117337",
+  "token": "0x3600000000000000000000000000000000000000",
+  "approval": "0xe54bb4ddd991cd7ba85e229198de52e5a0e1e58b98d8b703dadd3b6e8d1362ac",
+  "at": "2026-10-02T12:41:47.456Z"
+}

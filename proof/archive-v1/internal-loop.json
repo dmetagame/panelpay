@@ -1,0 +1,131 @@
+{
+  "at": "2026-10-02T12:03:38.960Z",
+  "url": "http://localhost:5190/runs/3/0x3009f86d6d161bcbc3971302b0265068570f5f96d7f6a8a0eeee35f289b06fce",
+  "base": "http://localhost:5190",
+  "classification": "reviewer_demo_internal",
+  "pageErrors": [],
+  "receipt": {
+    "campaign": {
+      "id": 3,
+      "terms": {
+        "title": "Internal reviewer fixture: inspect a payout rail",
+        "ownerHandle": "Rouma / internal reviewer fixture",
+        "owner": "0x104dC0B65554C2Fd2f69CE41F8A728C8D2AaA52f",
+        "brief": "INTERNAL DEMO, not an independent team campaign. Request a concrete review of an Arc testnet payout flow: identify one authorization risk and write a short, reproducible verification note.",
+        "eligibility": "Applicants must demonstrate experience reviewing EVM smart contracts and testnet transaction receipts. A specific example of an authorization or replay check is required.",
+        "completion": "Owner reviews a written verification note with one authorization check and one receipt check. Reviewer fixture evidence is internal and never headline traction.",
+        "amount": "0.01",
+        "cap": "0.02",
+        "deadline": 1791547376,
+        "classification": "internal",
+        "publicConsent": true,
+        "salt": "8ba98e64-3020-4fb2-a4cc-18b68c4d706c"
+      },
+      "state": {
+        "owner": "0x104dC0B65554C2Fd2f69CE41F8A728C8D2AaA52f",
+        "termsHash": "0xd818e5b243d92c34d2c17f26be0a9a1b112efbb8e6fd8ec324a9fcef0978011c",
+        "fixedAmount": "10000",
+        "cap": "20000",
+        "spent": "10000",
+        "deadline": "1791547376",
+        "active": true
+      },
+      "applications": [
+        {
+          "requestId": "0xc1909baf2f3295e9c2a68a5016ad11651103c945d72a65ef3e2f250aaac2a1fc",
+          "payee": "0x804172E7AdBC6f008561f46306bD6a9EfcfDcaE8",
+          "evidenceHash": "0x16cdced7ba023d1f0ab5a1b5749fe858046e4dc61086b071505021e7426794e3",
+          "decision": 2,
+          "completion": 0,
+          "paid": false,
+          "metadata": {
+            "handle": "Internal fixture · unrelated applicant",
+            "payee": "0x804172E7AdBC6f008561f46306bD6a9EfcfDcaE8",
+            "fit": "I only design restaurant menus and illustrations. I have never reviewed EVM contracts or testnet receipts and cannot provide the requested authorization checks.",
+            "evidence": "Internal mismatch fixture; no contract-review evidence.",
+            "publicConsent": true,
+            "classification": "internal",
+            "salt": "reviewer-fixture-skip"
+          },
+          "proposal": {
+            "decision": "skip",
+            "reason": "The applicant does not meet the eligibility criteria for reviewing EVM smart contracts and testnet transaction receipts.",
+            "evidence": [
+              "Applicant states they only design restaurant menus and illustrations.",
+              "Applicant has never reviewed EVM contracts or testnet receipts.",
+              "No contract-review evidence provided."
+            ],
+            "model": "openai/gpt-4o-mini",
+            "at": "2026-10-02T12:03:15.835Z"
+          },
+          "proof": ""
+        },
+        {
+          "requestId": "0x3009f86d6d161bcbc3971302b0265068570f5f96d7f6a8a0eeee35f289b06fce",
+          "payee": "0x75F5A0f8fc558614247cF8DB2935bb674b56C6b2",
+          "evidenceHash": "0xabc070fd046231d51ecef055d86c4323deb4ffdfd24e0b4cbb287d29b70e13a6",
+          "decision": 1,
+          "completion": 1,
+          "paid": true,
+          "metadata": {
+            "handle": "Internal fixture · contract reviewer",
+            "payee": "0x75F5A0f8fc558614247cF8DB2935bb674b56C6b2",
+            "fit": "I review EVM contract authorization and replay protection. I can test a wrong-payee settlement using an expectRevert assertion and verify the recipient and amount in the Arc transaction log.",
+            "evidence": "Internal matching fixture: reproducible wrong-payee and duplicate-request checks described above. These are test inputs, not a real applicant or completed work.",
+            "publicConsent": true,
+            "classification": "internal",
+            "salt": "reviewer-fixture-fit"
+          },
+          "proposal": {
+            "decision": "admit",
+            "reason": "The applicant demonstrates relevant experience in reviewing EVM smart contracts and has provided a specific example of an authorization check.",
+            "evidence": [
+              "Applicant reviews EVM contract authorization and replay protection.",
+              "Applicant can test a wrong-payee settlement using an expectRevert assertion.",
+              "Applicant can verify the recipient and amount in the Arc transaction log."
+            ],
+            "model": "openai/gpt-4o-mini",
+            "at": "2026-10-02T12:03:24.164Z"
+          },
+          "proof": "INTERNAL REVIEWER FIXTURE: owner reviewed the fixture note describing wrong-payee and replay checks. This is demo evidence, not independent completed work."
+        }
+      ],
+      "remaining": "0.01",
+      "available": "0.01"
+    },
+    "application": {
+      "requestId": "0x3009f86d6d161bcbc3971302b0265068570f5f96d7f6a8a0eeee35f289b06fce",
+      "payee": "0x75F5A0f8fc558614247cF8DB2935bb674b56C6b2",
+      "evidenceHash": "0xabc070fd046231d51ecef055d86c4323deb4ffdfd24e0b4cbb287d29b70e13a6",
+      "decision": 1,
+      "completion": 1,
+      "paid": true,
+      "metadata": {
+        "handle": "Internal fixture · contract reviewer",
+        "payee": "0x75F5A0f8fc558614247cF8DB2935bb674b56C6b2",
+        "fit": "I review EVM contract authorization and replay protection. I can test a wrong-payee settlement using an expectRevert assertion and verify the recipient and amount in the Arc transaction log.",
+        "evidence": "Internal matching fixture: reproducible wrong-payee and duplicate-request checks described above. These are test inputs, not a real applicant or completed work.",
+        "publicConsent": true,
+        "classification": "internal",
+        "salt": "reviewer-fixture-fit"
+      },
+      "proposal": {
+        "decision": "admit",
+        "reason": "The applicant demonstrates relevant experience in reviewing EVM smart contracts and has provided a specific example of an authorization check.",
+        "evidence": [
+          "Applicant reviews EVM contract authorization and replay protection.",
+          "Applicant can test a wrong-payee settlement using an expectRevert assertion.",
+          "Applicant can verify the recipient and amount in the Arc transaction log."
+        ],
+        "model": "openai/gpt-4o-mini",
+        "at": "2026-10-02T12:03:24.164Z"
+      },
+      "proof": "INTERNAL REVIEWER FIXTURE: owner reviewed the fixture note describing wrong-payee and replay checks. This is demo evidence, not independent completed work."
+    },
+    "txHash": "0x675cd0168d30da980debd2a6656d8ccd0453fe0ca752782d137717d1e764db13",
+    "confirmed": true,
+    "contract": "0xda1624101396074a25c9a34a6bfe051a4f878061",
+    "chainId": 5042002,
+    "disclaimer": "test USDC, no cash value"
+  }
+}

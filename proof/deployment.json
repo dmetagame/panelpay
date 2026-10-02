@@ -1,12 +1,12 @@
 {
   "chainId": 5042002,
   "disclaimer": "test USDC, no cash value",
-  "contract": "0xda1624101396074a25c9a34a6bfe051a4f878061",
+  "contract": "0xfedb374bbb6e157505e50c5d88d376ee5fd1e50a",
   "executor": "0xa9916Ee933748a07A56017C948e9A01cF4AdABd6",
   "signer": "stated Arc testnet signer",
-  "transactionHash": "0x8aa47ca2993d265c9b3632e84a2310872c232052d510d2a13bf2991551c7e8bd",
-  "block": "65093288",
+  "transactionHash": "0xc5e4e59b058d4f83e6c295a7f5822f929a3fe4b4316bfc493c217674bcb4cd0e",
+  "block": "65117567",
   "token": "0x3600000000000000000000000000000000000000",
-  "approval": "0x402b86f9b69a466e337ff7df61f9765ff933be7a9f88c859004909a108b1f442",
-  "at": "2026-10-02T09:17:49.752Z"
+  "approval": "0xf0dbad089134a641e1a1bab8d3f957d1aa94e04359f076fa9bff34979c03b6a2",
+  "at": "2026-10-02T12:43:44.742Z"
 }
