@@ -5,7 +5,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 // Internal wallet harness for the NORMAL forms. No API, model, RPC or payment
 // response is intercepted. This is UI verification, never outsider traction.
 const base = process.env.PANELPAY_BASE_URL || 'http://localhost:5190';
-const dir = 'proof/stranger-flow';
+const dir = process.env.PANELPAY_PROOF_DIR || 'proof/stranger-flow';
 mkdirSync(dir, { recursive: true });
 const browser = await chromium.launch({
   executablePath: process.env.PANELPAY_BROWSER || '/home/rouma/.cache/ms-playwright/chromium-1246/chrome-linux64/chrome',
@@ -37,6 +37,12 @@ async function screen(page, name) {
   if (await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)) throw new Error('Overflow: ' + name);
 }
 try {
+  const visitor = await browser.newPage();
+  await visitor.goto(base);
+  await visitor.getByRole('button', { name: 'Open a campaign' }).click();
+  await visitor.getByRole('button', { name: 'Connect owner wallet', exact: true }).click();
+  await visitor.getByText('A browser wallet is needed for a real campaign.', { exact: false }).waitFor();
+  await visitor.close();
   const owner = await walletPage();
   await owner.goto(base);
   await owner.getByRole('button', { name: 'Open a campaign' }).click();
@@ -97,8 +103,12 @@ try {
   const parts = new URL(owner.url()).pathname.split('/');
   const receipt = await owner.evaluate(async ({ id, request }) => (await fetch(`/api?action=receipt&id=${id}&request=${request}`)).json(), { id: parts[2], request: parts[3] });
   if (!receipt.confirmed || !receipt.txHash) throw new Error('Unconfirmed receipt');
+  const publicReceipt = await browser.newPage();
+  await publicReceipt.goto(owner.url());
+  await publicReceipt.getByText('Arc confirmed', { exact: true }).waitFor({ timeout: 120000 });
+  await publicReceipt.close();
   if (errors.length) throw new Error(errors.join('\n'));
-  const result = { at: new Date().toISOString(), result: 'PASS', base, campaignURL, receiptURL: owner.url(), walletHarness: 'Injected internal EIP-1193 signer; no API/model/RPC/payment interception', classification: 'internal', independentHeadline: 0, wrongOwnerRejected: true, pageErrors: errors, receipt };
+  const result = { at: new Date().toISOString(), result: 'PASS', base, campaignURL, receiptURL: owner.url(), walletHarness: 'Injected internal EIP-1193 signer; no API/model/RPC/payment interception', classification: 'internal', independentHeadline: 0, missingWalletExplained: true, wrongOwnerRejected: true, publicReceiptWithoutWallet: true, pageErrors: errors, receipt };
   writeFileSync(`${dir}/verification.json`, JSON.stringify(result, null, 2));
   console.log(JSON.stringify({ result: result.result, receipt: result.receiptURL, tx: receipt.txHash, independentHeadline: 0 }));
 } finally { await browser.close(); }

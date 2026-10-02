@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-02T22:03:00.851Z",
+  "at": "2026-10-02T22:12:15.707Z",
   "scope": "All deployed rail revisions, on-chain recorded activity only",
   "disclaimer": "test USDC, no cash value",
   "independentHeadline": {
@@ -10,11 +10,11 @@
     "USDC": "0"
   },
   "internalTotals": {
-    "campaigns": 7,
-    "applications": 11,
-    "decisions": 8,
-    "confirmedPayments": 3,
-    "confirmedTestUSDC": "0.030000"
+    "campaigns": 8,
+    "applications": 13,
+    "decisions": 10,
+    "confirmedPayments": 4,
+    "confirmedTestUSDC": "0.040000"
   },
   "rows": [
     {
@@ -190,6 +190,38 @@
       "paid": true,
       "amount": "0.01",
       "tx": "0x8aa77167ae1249d2827272fad4a9c81116cd06671e7f265f3c9eb7352ce24a73",
+      "model": "openai/gpt-4o-mini",
+      "evidenceClass": "reviewer_demo_internal"
+    },
+    {
+      "contract": "0xfedb374bbb6e157505e50c5d88d376ee5fd1e50a",
+      "campaign": 4,
+      "owner": "Rouma — internal normal-form verification",
+      "ownerClass": "internal",
+      "payee": "Internal normal-form skip",
+      "payeeClass": "internal",
+      "requestId": "0x6f165d625c315497cf84e65e4f2cc98ea87e804a24e1f016c3af2cc826dff2fe",
+      "decision": "skip",
+      "done": false,
+      "paid": false,
+      "amount": "0",
+      "tx": null,
+      "model": "openai/gpt-4o-mini",
+      "evidenceClass": "reviewer_demo_internal"
+    },
+    {
+      "contract": "0xfedb374bbb6e157505e50c5d88d376ee5fd1e50a",
+      "campaign": 4,
+      "owner": "Rouma — internal normal-form verification",
+      "ownerClass": "internal",
+      "payee": "Internal normal-form admit",
+      "payeeClass": "internal",
+      "requestId": "0xf5e443d4899a7690fb8f630855a983c32a95cbeae0a1ee8cea423f9811912d4d",
+      "decision": "admit",
+      "done": true,
+      "paid": true,
+      "amount": "0.01",
+      "tx": "0xc0c174d855093c26cad62964ceb7d5798fb94e49876d58e79230f20b7e98b8c3",
       "model": "openai/gpt-4o-mini",
       "evidenceClass": "reviewer_demo_internal"
     }
