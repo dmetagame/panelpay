@@ -527,6 +527,15 @@ footer {
   color: var(--muted);
   margin: 7px 0 0;
 }
+.fixture-note > div {
+  min-width: 0;
+}
+.fixture-note a {
+  display: inline-block;
+  margin-top: 12px;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+}
 .section-heading {
   display: flex;
   align-items: center;

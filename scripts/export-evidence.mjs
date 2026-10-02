@@ -14,9 +14,10 @@ for(const d of deployments){
  const paid=[];if(count){const to=await p.getBlockNumber();for(let from=BigInt(d.block);from<=to;from+=9999n)paid.push(...await p.getLogs({address:d.contract,event:parseAbiItem('event Paid(uint256 indexed campaignId, bytes32 indexed requestId, address indexed payee, uint96 amount)'),fromBlock:from,toBlock:from+9998n>to?to:from+9998n}));}
  for(let id=1;id<=count;id++){
   const terms=JSON.parse(await p.readContract({address:d.contract,abi,functionName:'campaignMetadata',args:[BigInt(id)]}));
+  if(terms.classification!=='internal') throw new Error('Non-internal campaign found. Preserve TRACTION.md; verify counterparties using docs/EXTERNAL_ROW.md before any ledger update.');
   const ids=await p.readContract({address:d.contract,abi,functionName:'getRequestIds',args:[BigInt(id)]});
   for(const requestId of ids){const args=[BigInt(id),requestId];const [a,m,r]=await Promise.all(['getApplication','applicationMetadata','decisionMetadata'].map(functionName=>p.readContract({address:d.contract,abi,functionName,args})));
-   const applicant=JSON.parse(m);const log=paid.find(l=>l.args.campaignId===BigInt(id)&&l.args.requestId===requestId);
+   const applicant=JSON.parse(m);if(applicant.classification!=='internal') throw new Error('Non-internal applicant found. Preserve TRACTION.md; verify address control and independence using docs/EXTERNAL_ROW.md.');const log=paid.find(l=>l.args.campaignId===BigInt(id)&&l.args.requestId===requestId);
    rows.push({contract:d.contract,campaign:id,owner:terms.ownerHandle,ownerClass:terms.classification,payee:applicant.handle,payeeClass:applicant.classification,requestId,decision:['pending','admit','skip','wait'][a.decision],done:a.completion===1,paid:a.paid,amount:log?formatUnits(log.args.amount,6):'0',tx:log?.transactionHash||null,model:r?JSON.parse(r).model:null,evidenceClass:'reviewer_demo_internal'});
   }
  }

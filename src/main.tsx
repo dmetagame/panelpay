@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useId } from "react";
 import { createRoot } from "react-dom/client";
 import {
   createWalletClient,
@@ -266,6 +266,8 @@ function App() {
       navigate("/runs/" + id + "/" + a.requestId);
     });
   const internal = campaign?.terms.classification === "internal";
+  const reviewerFixture = internal &&
+    campaign?.terms.ownerHandle === "Rouma / internal reviewer fixture";
   return (
     <>
       <header className="header shell">
@@ -336,7 +338,7 @@ function App() {
                   </button>
                 </div>
                 <p className="fine">
-                  test USDC, no cash value · No faucet on the reviewer path
+                  test USDC, no cash value · Browser wallet for signing; no gas or faucet needed
                 </p>
               </div>
               <div className="hero-rail">
@@ -514,16 +516,32 @@ function App() {
                     </a>
                   </div>
                 </section>
+                <section className="fixture-note" aria-label="How this campaign works">
+                  <div>
+                    <strong>Applicants: apply below. Owner: share this page.</strong>
+                    <p>
+                      After an application is locked, anyone can run its agent decision.
+                      Admit reserves the incentive; skip cannot pay; wait reserves nothing.
+                      An admitted applicant sends the deliverable to the team owner.
+                      Only the owner wallet can sign completion and trigger payment.
+                    </p>
+                    <a href={"/campaigns/" + id}>Campaign link: {location.origin}/campaigns/{id}</a>
+                  </div>
+                  <button className="secondary" disabled={!!pending}
+                    onClick={() => run("Refreshing confirmed campaign state…", refresh)}>
+                    Refresh campaign
+                  </button>
+                </section>
                 {internal && (
                   <div className="fixture-note">
                     <div>
-                      <strong>Internal reviewer campaign</strong>
+                      <strong>Internal campaign · excluded from headline</strong>
                       <p>
                         These inputs demonstrate the rail. They are excluded
                         from independent traction.
                       </p>
                     </div>
-                    {campaign.applications.length < 2 && (
+                    {reviewerFixture && campaign.applications.length < 2 && (
                       <button
                         className="secondary"
                         disabled={!!pending}
@@ -561,12 +579,13 @@ function App() {
                         receipt={() =>
                           navigate("/runs/" + id + "/" + a.requestId)
                         }
-                        internal={internal}
+                        internal={reviewerFixture}
+                        owner={campaign.state.owner}
                       />
                     ))
                   )}
                 </section>
-                {!internal && (
+                {Number(campaign.state.deadline) * 1000 > Date.now() && campaign.state.active ? (
                   <ApplyForm
                     pending={pending}
                     submit={(terms: any) =>
@@ -589,7 +608,7 @@ function App() {
                       )
                     }
                   />
-                )}
+                ) : <p className="empty">Applications closed. Existing decisions and receipts remain public.</p>}
               </>
             )}
           </>
@@ -649,15 +668,16 @@ function Field({
   defaultValue = "",
   ...props
 }: any) {
+  const fieldId = useId();
   return (
     <label className="field">
-      <span>{label}</span>
+      <span id={fieldId + "-label"}>{label}</span>
       {textarea ? (
-        <textarea name={name} defaultValue={defaultValue} required {...props} />
+        <textarea aria-labelledby={fieldId + "-label"} aria-describedby={help ? fieldId + "-help" : undefined} name={name} defaultValue={defaultValue} required {...props} />
       ) : (
-        <input name={name} defaultValue={defaultValue} required {...props} />
+        <input aria-labelledby={fieldId + "-label"} aria-describedby={help ? fieldId + "-help" : undefined} name={name} defaultValue={defaultValue} required {...props} />
       )}{" "}
-      {help && <small>{help}</small>}
+      {help && <small id={fieldId + "-help"}>{help}</small>}
     </label>
   );
 }
@@ -680,6 +700,10 @@ function OpenForm({
           setError("");
           try {
             const f = new FormData(e.currentTarget);
+            if (Number(f.get("cap")) < Number(f.get("amount")))
+              throw new Error("Campaign cap must cover at least one fixed incentive.");
+            if (new Date(f.get("deadline") as string).getTime() + 86399000 <= Date.now())
+              throw new Error("Choose a completion deadline today or later.");
             submit(
               campaignSchema.parse({
                 title: f.get("title"),
@@ -700,9 +724,8 @@ function OpenForm({
               }),
             );
           } catch (err) {
-            setError(
-              "Check all fields, the connected owner wallet, cap, and receipt consent.",
-            );
+            setError(err instanceof Error && !('issues' in err) ? err.message :
+              "Check the field lengths, owner wallet, cap (maximum 0.1 test USDC), and receipt consent.");
           }
         }}
       >
@@ -734,6 +757,7 @@ function OpenForm({
           textarea
           minLength={15}
           maxLength={1200}
+          help="State what earns admission and what should be skipped. At least 15 characters."
         />
         <Field
           label="Required completion proof"
@@ -766,6 +790,8 @@ function OpenForm({
             label="Completion deadline"
             name="deadline"
             type="date"
+            min={new Date().toISOString().slice(0, 10)}
+            max={new Date(Date.now() + 13 * 86400000).toISOString().slice(0, 10)}
             defaultValue={new Date(Date.now() + 7 * 86400000)
               .toISOString()
               .slice(0, 10)}
@@ -785,7 +811,8 @@ function OpenForm({
           {address ? "Owner " + short(address) : "Connect owner wallet"}
         </button>
         <small className="helper">
-          Signature only. No gas or faucet needed.
+          Use the wallet you will return with to confirm completed work. Signatures only;
+          the operator funds the test incentive. No gas or faucet needed.
         </small>
         <label className="checkbox">
           <input type="checkbox" name="internal" />
@@ -835,7 +862,7 @@ function ApplyForm({ pending, submit }: any) {
           }
         }}
       >
-        <Field label="Your handle" name="handle" />
+        <Field label="Your handle" name="handle" minLength={2} maxLength={80} />
         <Field
           label="Why you fit the brief"
           name="fit"
@@ -866,7 +893,8 @@ function ApplyForm({ pending, submit }: any) {
             : "Connect your receiving wallet"}
         </button>
         <small className="helper">
-          Sign to prove control. Applying does not mean selection or payment.
+          Use a wallet you control, never an exchange deposit address. Sign to prove
+          control; no gas or faucet needed. Applying does not mean selection or payment.
         </small>
         <label className="checkbox">
           <input type="checkbox" name="internal" />I am a friend or internal
@@ -894,6 +922,7 @@ function Contribution({
   settle,
   receipt,
   internal,
+  owner,
 }: any) {
   const [proof, setProof] = useState(
     internal
@@ -933,6 +962,7 @@ function Contribution({
           {a.decision === 3 ? "Reassess evidence" : "Run agent decision"} ↗
         </button>
       )}
+      {a.decision === 3 && <p className="saved">No incentive reserved yet. Reassess when the evidence or available budget changes.</p>}
       {a.decision === 2 && (
         <p className="saved">
           No payment path. The fixed {amount} test USDC stays in the campaign.
@@ -940,6 +970,7 @@ function Contribution({
       )}
       {a.decision === 1 && !a.paid && a.completion === 0 && (
         <div className="completion-form">
+          <p>Admitted: deliver the work to the team owner. Owner: return with wallet <code>{owner}</code> to confirm it. Marking done pays the locked address automatically.</p>
           <label className="field">
             <span>Owner completion evidence</span>
             <textarea

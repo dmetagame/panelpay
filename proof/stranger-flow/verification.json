@@ -1,0 +1,143 @@
+{
+  "at": "2026-10-02T20:50:31.189Z",
+  "result": "PASS",
+  "base": "http://localhost:5190",
+  "campaignURL": "http://localhost:5190/campaigns/3",
+  "receiptURL": "http://localhost:5190/runs/3/0xdcf97317ae718827f4481faf7fcda691ca0164812373a193879509b8efde2006",
+  "walletHarness": "Injected internal EIP-1193 signer; no API/model/RPC/payment interception",
+  "classification": "internal",
+  "independentHeadline": 0,
+  "wrongOwnerRejected": true,
+  "pageErrors": [],
+  "receipt": {
+    "campaign": {
+      "id": 3,
+      "terms": {
+        "title": "Internal usability check: review authorization",
+        "ownerHandle": "Rouma — internal normal-form verification",
+        "owner": "0xada5C0FDB78036D7c004F8a8A99Fc318A9F4E993",
+        "brief": "INTERNAL UI TEST: review an EVM payout contract and write a verification note describing wrong-payee and replay rejection. No independent team or completed real work is claimed.",
+        "eligibility": "Must demonstrate EVM authorization and replay-protection testing experience with a specific reproducible example. Skip unrelated applicants without this experience.",
+        "completion": "Owner reviews a written authorization and receipt verification note. All inputs and completion in this campaign are internal UI fixtures, not independent work.",
+        "amount": "0.01",
+        "cap": "0.02",
+        "deadline": 1791590399,
+        "classification": "internal",
+        "publicConsent": true,
+        "salt": "a0d4fcc9-b5fe-4e50-9912-b206696b3d8c"
+      },
+      "state": {
+        "owner": "0xada5C0FDB78036D7c004F8a8A99Fc318A9F4E993",
+        "termsHash": "0x8e117d1ac6d63612c1c336386fa46ed36f8361eba2eccf0f49370e626f31e596",
+        "fixedAmount": "10000",
+        "cap": "20000",
+        "spent": "10000",
+        "reserved": "0",
+        "deadline": "1791590399",
+        "active": true
+      },
+      "applications": [
+        {
+          "requestId": "0x2b0fe09fc4cdb041007317a5cfae5e49aaf852afe2f5758a6be79b859bb62b4a",
+          "payee": "0xe2681C2Ef78E7d0B5C306E1a8bF3E16a7Aa38cab",
+          "evidenceHash": "0x6c115352be4f01af9c1e0c9316eba176682e0e633f58dc7e75817b483fa94166",
+          "decision": 2,
+          "completion": 0,
+          "paid": false,
+          "paidBlock": "0",
+          "metadata": {
+            "handle": "Internal normal-form skip",
+            "payee": "0xe2681C2Ef78E7d0B5C306E1a8bF3E16a7Aa38cab",
+            "fit": "I only illustrate restaurant menus. I have never reviewed an EVM contract and have no authorization or replay-testing experience.",
+            "evidence": "Internal mismatch fixture: no contract-testing evidence.",
+            "publicConsent": true,
+            "classification": "internal",
+            "salt": "53c82093-46d2-45bf-9f85-979481736489"
+          },
+          "proposal": {
+            "decision": "skip",
+            "reason": "The applicant does not meet the eligibility criteria for EVM authorization and replay-protection testing experience.",
+            "evidence": [
+              "Applicant states they only illustrate restaurant menus.",
+              "Applicant has never reviewed an EVM contract.",
+              "Applicant has no authorization or replay-testing experience."
+            ],
+            "availableAtDecision": "0.02",
+            "model": "openai/gpt-4o-mini",
+            "at": "2026-10-02T20:50:04.410Z"
+          },
+          "proof": ""
+        },
+        {
+          "requestId": "0xdcf97317ae718827f4481faf7fcda691ca0164812373a193879509b8efde2006",
+          "payee": "0x63a903176501B435db2250B97E7D1bA74944a737",
+          "evidenceHash": "0xbbd9569efdf3f43d4ff31ededfc145f9b85a9eb2bee885c3adea19c0c5913463",
+          "decision": 1,
+          "completion": 1,
+          "paid": true,
+          "paidBlock": "65174867",
+          "metadata": {
+            "handle": "Internal normal-form admit",
+            "payee": "0x63a903176501B435db2250B97E7D1bA74944a737",
+            "fit": "I review EVM access control and replay protection. I use expectRevert for wrong beneficiary and duplicate request ID, and verify exact token recipient and amount against transaction logs.",
+            "evidence": "Internal matching fixture: wrong-beneficiary settlement must revert; consuming the same request ID twice must revert; inspect ERC20 transfer logs. This is test evidence only.",
+            "publicConsent": true,
+            "classification": "internal",
+            "salt": "bea3e89f-3d02-4409-8840-e682fc971705"
+          },
+          "proposal": {
+            "decision": "admit",
+            "reason": "The applicant demonstrates relevant experience in EVM authorization and replay-protection testing, which aligns with the campaign requirements.",
+            "evidence": [
+              "The applicant reviews EVM access control and replay protection.",
+              "They use expectRevert for wrong beneficiary and duplicate request ID.",
+              "They verify exact token recipient and amount against transaction logs."
+            ],
+            "availableAtDecision": "0.02",
+            "model": "openai/gpt-4o-mini",
+            "at": "2026-10-02T20:50:16.336Z"
+          },
+          "proof": "INTERNAL USABILITY FIXTURE: owner verified the normal-form test note about wrong-payee and replay checks. This is reconstructed test evidence, not an independently completed deliverable."
+        }
+      ],
+      "remaining": "0.01",
+      "available": "0.01"
+    },
+    "application": {
+      "requestId": "0xdcf97317ae718827f4481faf7fcda691ca0164812373a193879509b8efde2006",
+      "payee": "0x63a903176501B435db2250B97E7D1bA74944a737",
+      "evidenceHash": "0xbbd9569efdf3f43d4ff31ededfc145f9b85a9eb2bee885c3adea19c0c5913463",
+      "decision": 1,
+      "completion": 1,
+      "paid": true,
+      "paidBlock": "65174867",
+      "metadata": {
+        "handle": "Internal normal-form admit",
+        "payee": "0x63a903176501B435db2250B97E7D1bA74944a737",
+        "fit": "I review EVM access control and replay protection. I use expectRevert for wrong beneficiary and duplicate request ID, and verify exact token recipient and amount against transaction logs.",
+        "evidence": "Internal matching fixture: wrong-beneficiary settlement must revert; consuming the same request ID twice must revert; inspect ERC20 transfer logs. This is test evidence only.",
+        "publicConsent": true,
+        "classification": "internal",
+        "salt": "bea3e89f-3d02-4409-8840-e682fc971705"
+      },
+      "proposal": {
+        "decision": "admit",
+        "reason": "The applicant demonstrates relevant experience in EVM authorization and replay-protection testing, which aligns with the campaign requirements.",
+        "evidence": [
+          "The applicant reviews EVM access control and replay protection.",
+          "They use expectRevert for wrong beneficiary and duplicate request ID.",
+          "They verify exact token recipient and amount against transaction logs."
+        ],
+        "availableAtDecision": "0.02",
+        "model": "openai/gpt-4o-mini",
+        "at": "2026-10-02T20:50:16.336Z"
+      },
+      "proof": "INTERNAL USABILITY FIXTURE: owner verified the normal-form test note about wrong-payee and replay checks. This is reconstructed test evidence, not an independently completed deliverable."
+    },
+    "txHash": "0x8aa77167ae1249d2827272fad4a9c81116cd06671e7f265f3c9eb7352ce24a73",
+    "confirmed": true,
+    "contract": "0xfedb374bbb6e157505e50c5d88d376ee5fd1e50a",
+    "chainId": 5042002,
+    "disclaimer": "test USDC, no cash value"
+  }
+}

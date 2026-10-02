@@ -25,6 +25,8 @@ Open one campaign → publish one skip → publish one admit → owner confirms 
 
 The repository never counts internal dogfood as independent traction. See [TRACTION.md](./TRACTION.md).
 
+For a normal campaign, connect the owner wallet, sign the terms, and share the campaign link. Applicants sign with their receiving wallet; no gas or faucet is required. Anyone can run the agent decision. Admitted applicants send their work to the team owner, who returns with the original owner wallet to sign completion. Refresh the campaign to see another person's application or confirmation.
+
 ## Evidence, custody, and current limits
 
 The published proof uses real Arc testnet transactions with labeled internal reviewer fixtures. Independent traction is zero. The current executor is a stated, isolated testnet signer; Circle Developer-Controlled Wallets are not configured and are not claimed. The contract, rather than model output or a database flag, is the payment authorization boundary.
@@ -38,3 +40,5 @@ The operator prefunds public test campaigns, with a 0.1 test-USDC campaign ceili
 Use Node 22, npm, and Foundry. Run `npm ci`, configure the ignored `.env.local` using `.env.example`, and run `npm run dev`. No key belongs in a client-side variable. For your own deployment, fund an isolated Arc testnet executor, run `forge build`, `npm run generate:artifact`, then `node scripts/deploy.mjs`.
 
 `npm run check` runs policy tests, contract invariants, TypeScript, and the production build. `scripts/browser-smoke.mjs` verifies desktop/mobile and the complete reviewer loop; its test transactions are labeled internal. [Executor boundaries](./docs/EXECUTOR.md) document the exact release conditions.
+
+`scripts/browser-stranger.mjs` checks the normal forms with separate internal owner/applicant wallet harnesses, a rejected wrong-owner confirmation, and real testnet settlement. Wallet signing is simulated; API, model, RPC, and payment responses are not intercepted. Evidence is separate in [proof/stranger-flow](./proof/stranger-flow/). [First external row](./docs/EXTERNAL_ROW.md) defines verification before any independent headline claim; the internal exporter stops when it encounters non-internal activity.
