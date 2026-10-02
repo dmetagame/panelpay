@@ -1,26 +1,39 @@
 # Traction ledger
 
-Arc testnet only. Test USDC has no cash value.
+Snapshot: 2026-10-02T13:51:00.284Z. Arc testnet only — **test USDC, no cash value**.
 
-No independent activity has been recorded yet. This file separates external evidence from dogfood from the first run.
+## Submission headline
 
-## Headline rule
+| Independent owners | Independent applicants | Independent agent decisions | Independent paid deliverables | Confirmed independent test USDC |
+|---:|---:|---:|---:|---:|
+| 0 | 0 | 0 | 0 | 0 |
 
-A paid deliverable is headline-eligible only when the campaign owner is independent, the payee controls the locked Arc testnet address, the deliverable was confirmed, and the payment has a confirmed Arc transaction. A skip is agency evidence and never payment volume.
+No independent campaign has been verified. Rouma, dmetagame, Latchline, @Abu_olododo, friends, and reviewer fixtures are internal and headline-ineligible. Unknown counterparties remain unverified until documented operator verification.
 
-Latchline, `@Abu_olododo`, Rouma, `dmetagame`, friends, reviewer runs, historical examples, retries, and reverted attempts are internal or demo activity. They never enter headline owner, beneficiary, deliverable, or volume counts.
+A headline payment requires an independent owner, an independently verified payee who controls the address, owner-confirmed deliverable, and confirmed Arc transaction. Skips count as agency evidence only, never volume. Historical baselines, demos, failed attempts, and retries never become headline traction.
 
-## Headline totals
+## Internal on-chain activity — excluded from headline
 
-| Independent owners | Independent applicants | Agent decisions | Public skips | Confirmed paid deliverables | Confirmed test USDC |
-|---:|---:|---:|---:|---:|---:|
-| 0 | 0 | 0 | 0 | 0 | 0 |
+6 campaigns, 9 applications, 6 committed decisions, 2 confirmed fixture payments, 0.020000 test USDC. These include development revisions and interrupted runs. Each request appears once.
 
-## Event ledger
+| Contract / campaign | Counterparty class | Request | Decision | Owner done | Confirmed test USDC | Arc transaction | Evidence class |
+|---|---|---|---|---|---:|---|---|
+| 0xda1624…878061 / 1 | internal / internal | 0x8eb742…90dc63 | pending | no | 0 | — | reviewer_demo_internal |
+| 0xda1624…878061 / 1 | internal / internal | 0x36be7e…fec90c | pending | no | 0 | — | reviewer_demo_internal |
+| 0xda1624…878061 / 3 | internal / internal | 0xc1909b…c2a1fc | skip | no | 0 | — | reviewer_demo_internal |
+| 0xda1624…878061 / 3 | internal / internal | 0x3009f8…b06fce | admit | yes | 0.01 | [0x675cd0…64db13](https://testnet.arcscan.app/tx/0x675cd0168d30da980debd2a6656d8ccd0453fe0ca752782d137717d1e764db13) | reviewer_demo_internal |
+| 0xda1624…878061 / 4 | internal / internal | 0x6e93a7…298196 | skip | no | 0 | — | reviewer_demo_internal |
+| 0xda1624…878061 / 4 | internal / internal | 0x1d0289…174b68 | admit | no | 0 | — | reviewer_demo_internal |
+| 0xfedb37…d1e50a / 1 | internal / internal | 0x287275…7b4c0b | pending | no | 0 | — | reviewer_demo_internal |
+| 0xfedb37…d1e50a / 2 | internal / internal | 0x8cdf87…d94fb0 | skip | no | 0 | — | reviewer_demo_internal |
+| 0xfedb37…d1e50a / 2 | internal / internal | 0xff9b55…38d13b | admit | yes | 0.01 | [0xaaf811…9e0eb6](https://testnet.arcscan.app/tx/0xaaf81164930a48e247801041217457258abafce5a63937ceb2c34f997f9e0eb6) | reviewer_demo_internal |
 
-| Date | Campaign | Owner class | Payee class | Request ID | Decision | Deliverable confirmed | Test USDC | Arc transaction | Owner/payee acknowledgment | Evidence class |
-|---|---|---|---|---|---|---|---:|---|---|---|
-| — | — | — | — | — | — | — | 0 | — | — | No activity yet |
+## Other evidence classes
 
-Allowed evidence classes: `live_independent`, `live_internal`, `historical_baseline`, `reviewer_demo`, `failed_reverted`.
+- Historical baseline: none supplied. Never headline.
+- Demo/reviewer runs: all recorded activity above. The completion text explicitly describes fixtures, not independently completed work.
+- Failed/interrupted attempts: placeholder model configuration, pre-fix function startup, RPC throttling, and browser network changes occurred during development. They are not counted as payments or separate applicants. No unsupported numerical failure total is claimed.
+- Revert checks: 17 EVM tests and five read-only checks against the deployed contract. Read-only checks are not failed payment transactions or payment volume.
+- Beneficiary acknowledgment: none from an independent human. Fixture addresses are controlled by browser-generated internal accounts.
 
+Full dated records: [ledger.json](proof/ledger.json), [current loop](proof/internal-loop.json), [proof](proof/PROOF.md).

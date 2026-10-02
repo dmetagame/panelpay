@@ -1,0 +1,131 @@
+1
+00:00:00,450 --> 00:00:02,878
+PanelPay turns a team's brief into a bounded
+
+2
+00:00:02,890 --> 00:00:06,842
+commitment The team sets eligibility a fixed incentive
+
+3
+00:00:07,047 --> 00:00:09,655
+and a cap An agent chooses who is
+
+4
+00:00:09,667 --> 00:00:13,453
+worth the remaining budget This walkthrough uses internal
+
+5
+00:00:13,465 --> 00:00:17,539
+reviewer fixtures and real Arc testnet transactions Test
+
+6
+00:00:17,551 --> 00:00:19,450
+USDC has no cash value
+
+7
+00:00:21,517 --> 00:00:24,521
+The campaign locks its brief owner amount and
+
+8
+00:00:24,533 --> 00:00:28,462
+cap before applications arrive Owners and applicants sign
+
+9
+00:00:28,474 --> 00:00:32,632
+without paying gas A separate stated testnet executor
+
+10
+00:00:32,645 --> 00:00:36,310
+relays transactions The model never holds a key
+
+11
+00:00:38,350 --> 00:00:40,838
+The first fixture lacks the required contract review
+
+12
+00:00:40,850 --> 00:00:44,141
+experience The agent skips it and publishes the
+
+13
+00:00:44,153 --> 00:00:48,240
+reason A skip has no payment path It
+
+14
+00:00:48,252 --> 00:00:50,776
+is evidence of agency never payment volume
+
+15
+00:00:52,850 --> 00:00:55,915
+The matching fixture gives concrete authorization and replay
+
+16
+00:00:55,927 --> 00:00:59,146
+checks The agent admits it against the unreserved
+
+17
+00:00:59,158 --> 00:01:03,930
+budget Admission alone cannot release funds The receiving
+
+18
+00:01:03,942 --> 00:01:06,105
+address and exact amount are already locked
+
+19
+00:01:08,150 --> 00:01:10,758
+The owner reviews completion evidence and signs done
+
+20
+00:01:11,586 --> 00:01:14,759
+A not done decision keeps payment blocked This
+
+21
+00:01:14,771 --> 00:01:17,523
+completion is explicitly an internal fixture not a
+
+22
+00:01:17,535 --> 00:01:19,013
+claim of independent work
+
+23
+00:01:21,083 --> 00:01:23,776
+The executor now pays exactly zero point zero
+
+24
+00:01:23,788 --> 00:01:27,091
+one test USDC to the locked address The
+
+25
+00:01:27,103 --> 00:01:30,348
+public receipt exposes the agent rationale owner evidence
+
+26
+00:01:30,541 --> 00:01:35,168
+request identifier and confirmed Arc transaction Wrong payee
+
+27
+00:01:35,492 --> 00:01:38,317
+over cap replay and skip as pay revert
+
+28
+00:01:38,329 --> 00:01:39,483
+at the contract boundary
+
+29
+00:01:41,550 --> 00:01:45,995
+Independent traction remains zero Internal activity is recorded
+
+30
+00:01:46,007 --> 00:01:50,442
+separately from verified independent campaigns and beneficiaries Try
+
+31
+00:01:50,454 --> 00:01:53,002
+the prefunded reviewer path at panelpay ruby dot
+
+32
+00:01:53,014 --> 00:01:55,070
+vercel dot app and inspect the source at
+
+33
+00:01:55,082 --> 00:02:00,430
+GitHub dmetagame panelpay Test USDC no cash value

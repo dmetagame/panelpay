@@ -8,7 +8,7 @@ The model never holds a key and never releases funds. The Arc contract locks cam
 
 > Arc testnet only. Test USDC has no cash value.
 
-[Try the rail](https://panelpay-ruby.vercel.app/) · [Judge walkthrough](./DEMO.md) · [Payment proof](./proof/PROOF.md)
+[Try the rail](https://panelpay-ruby.vercel.app/) · [2-minute narrated demo](https://raw.githubusercontent.com/dmetagame/panelpay/main/demo-video/panelpay-demo.mp4) · [Judge walkthrough](./DEMO.md) · [Payment proof](./proof/PROOF.md)
 
 ## The loop
 

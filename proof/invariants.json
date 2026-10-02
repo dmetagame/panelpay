@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-02T13:46:01.847Z",
+  "chainId": 5042002,
+  "contract": "0xfedb374bbb6e157505e50c5d88d376ee5fd1e50a",
+  "runtimeMatchesSource": true,
+  "normalizedRuntimeHash": "0xad4f7ad1667eb8901f2afa5582b62e1d25483b15cd5fd5a5ba2ccd4ad7c46eaf",
+  "confirmedPayment": "0xaaf81164930a48e247801041217457258abafce5a63937ceb2c34f997f9e0eb6",
+  "paymentBlock": "65124299",
+  "results": [
+    {
+      "case": "wrong_payee",
+      "revert": "WrongBeneficiary",
+      "method": "read-only eth_call on deployed Arc contract",
+      "block": "65124298"
+    },
+    {
+      "case": "wrong_amount",
+      "revert": "WrongAmount",
+      "method": "read-only eth_call on deployed Arc contract",
+      "block": "65124298"
+    },
+    {
+      "case": "skip_as_pay",
+      "revert": "SkipAsPay",
+      "method": "read-only eth_call on deployed Arc contract",
+      "block": "latest"
+    },
+    {
+      "case": "replay",
+      "revert": "Replay",
+      "method": "read-only eth_call on deployed Arc contract",
+      "block": "latest"
+    },
+    {
+      "case": "wrong_caller",
+      "revert": "UnauthorizedCaller",
+      "method": "read-only eth_call on deployed Arc contract",
+      "block": "latest"
+    }
+  ],
+  "capProof": "test/PanelPay.t.sol:testOverCapReverts; 25,000 cap rejects third 10,000 admission after 20,000 spent. Admission reserves capacity on-chain; not done releases it."
+}

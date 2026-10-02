@@ -1,0 +1,38 @@
+{
+  "01-home": {
+    "width": 1440,
+    "height": 570,
+    "source": "proof/screens/01-home.png",
+    "cropY": 130
+  },
+  "03-campaign": {
+    "width": 1440,
+    "height": 570,
+    "source": "proof/screens/03-campaign.png",
+    "cropY": 130
+  },
+  "05-skip": {
+    "width": 1440,
+    "height": 570,
+    "source": "proof/screens/05-skip.png",
+    "cropY": 1046
+  },
+  "06-admit": {
+    "width": 1440,
+    "height": 570,
+    "source": "proof/screens/06-admit.png",
+    "cropY": 1498
+  },
+  "07-confirmed": {
+    "width": 1440,
+    "height": 562,
+    "source": "proof/screens/07-confirmed.png",
+    "cropY": 1718
+  },
+  "08-receipt": {
+    "width": 1440,
+    "height": 1135,
+    "source": "proof/screens/08-receipt.png",
+    "cropY": 390
+  }
+}

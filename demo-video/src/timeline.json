@@ -1,0 +1,237 @@
+[
+  {
+    "id": "intro",
+    "title": "Pay for the right contribution",
+    "screen": "01-home",
+    "text": "PanelPay turns a team's brief into a bounded commitment. The team sets eligibility, a fixed incentive, and a cap. An agent chooses who is worth the remaining budget. This walkthrough uses internal reviewer fixtures and real Arc testnet transactions. Test USDC has no cash value.",
+    "frames": 632,
+    "audioDuration": 19.944,
+    "captions": [
+      {
+        "text": "PanelPay turns a team's brief into a bounded",
+        "start": 0.44999999999999996,
+        "end": 2.877875
+      },
+      {
+        "text": "commitment The team sets eligibility a fixed incentive",
+        "start": 2.889916,
+        "end": 6.842333
+      },
+      {
+        "text": "and a cap An agent chooses who is",
+        "start": 7.046625,
+        "end": 9.654831999999999
+      },
+      {
+        "text": "worth the remaining budget This walkthrough uses internal",
+        "start": 9.666833,
+        "end": 13.452874
+      },
+      {
+        "text": "reviewer fixtures and real Arc testnet transactions Test",
+        "start": 13.464915999999999,
+        "end": 17.539416000000003
+      },
+      {
+        "text": "USDC has no cash value",
+        "start": 17.551458,
+        "end": 19.450458
+      }
+    ]
+  },
+  {
+    "id": "campaign",
+    "title": "Terms lock before judgment",
+    "screen": "03-campaign",
+    "text": "The campaign locks its brief, owner, amount, and cap before applications arrive. Owners and applicants sign without paying gas. A separate, stated testnet executor relays transactions. The model never holds a key.",
+    "frames": 505,
+    "audioDuration": 15.72,
+    "captions": [
+      {
+        "text": "The campaign locks its brief owner amount and",
+        "start": 0.44999999999999996,
+        "end": 3.454832
+      },
+      {
+        "text": "cap before applications arrive Owners and applicants sign",
+        "start": 3.4668330000000003,
+        "end": 7.395166
+      },
+      {
+        "text": "without paying gas A separate stated testnet executor",
+        "start": 7.407208,
+        "end": 11.565833
+      },
+      {
+        "text": "relays transactions The model never holds a key",
+        "start": 11.577874999999999,
+        "end": 15.243749
+      }
+    ]
+  },
+  {
+    "id": "skip",
+    "title": "A skip preserves the budget",
+    "screen": "05-skip",
+    "text": "The first fixture lacks the required contract review experience. The agent skips it and publishes the reason. A skip has no payment path. It is evidence of agency, never payment volume.",
+    "frames": 435,
+    "audioDuration": 13.368,
+    "captions": [
+      {
+        "text": "The first fixture lacks the required contract review",
+        "start": 0.44999999999999996,
+        "end": 2.938
+      },
+      {
+        "text": "experience The agent skips it and publishes the",
+        "start": 2.95,
+        "end": 6.241333
+      },
+      {
+        "text": "reason A skip has no payment path It",
+        "start": 6.253374999999999,
+        "end": 10.339915999999999
+      },
+      {
+        "text": "is evidence of agency never payment volume",
+        "start": 10.351916,
+        "end": 12.875957
+      }
+    ]
+  },
+  {
+    "id": "admit",
+    "title": "Admit against evidence and budget",
+    "screen": "06-admit",
+    "text": "The matching fixture gives concrete authorization and replay checks. The agent admits it against the unreserved budget. Admission alone cannot release funds. The receiving address and exact amount are already locked.",
+    "frames": 459,
+    "audioDuration": 14.184,
+    "captions": [
+      {
+        "text": "The matching fixture gives concrete authorization and replay",
+        "start": 0.44999999999999996,
+        "end": 3.514916
+      },
+      {
+        "text": "checks The agent admits it against the unreserved",
+        "start": 3.526916,
+        "end": 6.746124999999999
+      },
+      {
+        "text": "budget Admission alone cannot release funds The receiving",
+        "start": 6.758165999999999,
+        "end": 11.529833
+      },
+      {
+        "text": "address and exact amount are already locked",
+        "start": 11.541833,
+        "end": 13.705290999999999
+      }
+    ]
+  },
+  {
+    "id": "confirm",
+    "title": "The owner confirms the work",
+    "screen": "07-confirmed",
+    "text": "The owner reviews completion evidence and signs done. A not done decision keeps payment blocked. This completion is explicitly an internal fixture, not a claim of independent work.",
+    "frames": 388,
+    "audioDuration": 11.808,
+    "captions": [
+      {
+        "text": "The owner reviews completion evidence and signs done",
+        "start": 0.44999999999999996,
+        "end": 3.058166
+      },
+      {
+        "text": "A not done decision keeps payment blocked This",
+        "start": 3.885583,
+        "end": 7.058666
+      },
+      {
+        "text": "completion is explicitly an internal fixture not a",
+        "start": 7.070665999999999,
+        "end": 9.823083
+      },
+      {
+        "text": "claim of independent work",
+        "start": 9.835083,
+        "end": 11.313457999999999
+      }
+    ]
+  },
+  {
+    "id": "receipt",
+    "title": "Confirmed on Arc testnet",
+    "screen": "08-receipt",
+    "text": "The executor now pays exactly zero point zero one test USDC to the locked address. The public receipt exposes the agent rationale, owner evidence, request identifier, and confirmed Arc transaction. Wrong payee, over cap, replay, and skip as pay revert at the contract boundary.",
+    "frames": 614,
+    "audioDuration": 19.344,
+    "captions": [
+      {
+        "text": "The executor now pays exactly zero point zero",
+        "start": 0.44999999999999996,
+        "end": 3.1423330000000003
+      },
+      {
+        "text": "one test USDC to the locked address The",
+        "start": 3.1543330000000003,
+        "end": 6.457707999999999
+      },
+      {
+        "text": "public receipt exposes the agent rationale owner evidence",
+        "start": 6.469708,
+        "end": 9.714875
+      },
+      {
+        "text": "request identifier and confirmed Arc transaction Wrong payee",
+        "start": 9.907207999999999,
+        "end": 14.534583
+      },
+      {
+        "text": "over cap replay and skip as pay revert",
+        "start": 14.859124999999999,
+        "end": 17.683666000000002
+      },
+      {
+        "text": "at the contract boundary",
+        "start": 17.695666000000003,
+        "end": 18.849499
+      }
+    ]
+  },
+  {
+    "id": "close",
+    "title": "Inspect the proof. Try the rail.",
+    "screen": "08-receipt",
+    "text": "Independent traction remains zero. Internal activity is recorded separately from verified independent campaigns and beneficiaries. Try the prefunded reviewer path at panelpay ruby dot vercel dot app, and inspect the source at GitHub, dmetagame, panelpay. Test USDC, no cash value.",
+    "frames": 628,
+    "audioDuration": 19.824,
+    "captions": [
+      {
+        "text": "Independent traction remains zero Internal activity is recorded",
+        "start": 0.44999999999999996,
+        "end": 4.895207999999999
+      },
+      {
+        "text": "separately from verified independent campaigns and beneficiaries Try",
+        "start": 4.907208,
+        "end": 9.342333
+      },
+      {
+        "text": "the prefunded reviewer path at panelpay ruby dot",
+        "start": 9.354333,
+        "end": 11.902415999999999
+      },
+      {
+        "text": "vercel dot app and inspect the source at",
+        "start": 11.914416,
+        "end": 13.969707
+      },
+      {
+        "text": "GitHub dmetagame panelpay Test USDC no cash value",
+        "start": 13.98175,
+        "end": 19.330291000000003
+      }
+    ]
+  }
+]

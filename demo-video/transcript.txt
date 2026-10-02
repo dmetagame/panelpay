@@ -1,0 +1,13 @@
+PanelPay turns a team's brief into a bounded commitment. The team sets eligibility, a fixed incentive, and a cap. An agent chooses who is worth the remaining budget. This walkthrough uses internal reviewer fixtures and real Arc testnet transactions. Test USDC has no cash value.
+
+The campaign locks its brief, owner, amount, and cap before applications arrive. Owners and applicants sign without paying gas. A separate, stated testnet executor relays transactions. The model never holds a key.
+
+The first fixture lacks the required contract review experience. The agent skips it and publishes the reason. A skip has no payment path. It is evidence of agency, never payment volume.
+
+The matching fixture gives concrete authorization and replay checks. The agent admits it against the unreserved budget. Admission alone cannot release funds. The receiving address and exact amount are already locked.
+
+The owner reviews completion evidence and signs done. A not done decision keeps payment blocked. This completion is explicitly an internal fixture, not a claim of independent work.
+
+The executor now pays exactly zero point zero one test USDC to the locked address. The public receipt exposes the agent rationale, owner evidence, request identifier, and confirmed Arc transaction. Wrong payee, over cap, replay, and skip as pay revert at the contract boundary.
+
+Independent traction remains zero. Internal activity is recorded separately from verified independent campaigns and beneficiaries. Try the prefunded reviewer path at panelpay ruby dot vercel dot app, and inspect the source at GitHub, dmetagame, panelpay. Test USDC, no cash value.

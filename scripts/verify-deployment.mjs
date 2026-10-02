@@ -123,7 +123,7 @@ const output = {
   paymentBlock: receipt.blockNumber.toString(),
   results,
   capProof:
-    "test/PanelPay.t.sol:testOverCapReverts; 25,000 cap rejects third 10,000 transfer after 20,000 spent",
+    "test/PanelPay.t.sol:testOverCapReverts; 25,000 cap rejects third 10,000 admission after 20,000 spent. Admission reserves capacity on-chain; not done releases it.",
 };
 writeFileSync("proof/invariants.json", JSON.stringify(output, null, 2));
 console.log(JSON.stringify(output, null, 2));

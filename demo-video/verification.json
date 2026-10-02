@@ -1,0 +1,102 @@
+{
+  "durationSeconds": 122.048,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "videoCodec": "h264",
+  "audioCodec": "aac",
+  "completeDecode": "PASS",
+  "audioCaptionBoundaries": "PASS",
+  "sceneEndChecks": "PASS",
+  "sha256": "99874e677032db6567bf444c6d63fb707c05d2e43d5bd7b677dffe023d09daa0",
+  "bytes": 12311656,
+  "frames": [
+    {
+      "scene": "intro",
+      "position": "mid",
+      "seconds": 10.533,
+      "file": "verification-frames/intro-mid.jpg"
+    },
+    {
+      "scene": "intro",
+      "position": "ending",
+      "seconds": 20.567,
+      "file": "verification-frames/intro-ending.jpg"
+    },
+    {
+      "scene": "campaign",
+      "position": "mid",
+      "seconds": 29.483,
+      "file": "verification-frames/campaign-mid.jpg"
+    },
+    {
+      "scene": "campaign",
+      "position": "ending",
+      "seconds": 37.4,
+      "file": "verification-frames/campaign-ending.jpg"
+    },
+    {
+      "scene": "skip",
+      "position": "mid",
+      "seconds": 45.15,
+      "file": "verification-frames/skip-mid.jpg"
+    },
+    {
+      "scene": "skip",
+      "position": "ending",
+      "seconds": 51.9,
+      "file": "verification-frames/skip-ending.jpg"
+    },
+    {
+      "scene": "admit",
+      "position": "mid",
+      "seconds": 60.05,
+      "file": "verification-frames/admit-mid.jpg"
+    },
+    {
+      "scene": "admit",
+      "position": "ending",
+      "seconds": 67.2,
+      "file": "verification-frames/admit-ending.jpg"
+    },
+    {
+      "scene": "confirm",
+      "position": "mid",
+      "seconds": 74.167,
+      "file": "verification-frames/confirm-mid.jpg"
+    },
+    {
+      "scene": "confirm",
+      "position": "ending",
+      "seconds": 80.133,
+      "file": "verification-frames/confirm-ending.jpg"
+    },
+    {
+      "scene": "receipt",
+      "position": "mid",
+      "seconds": 90.867,
+      "file": "verification-frames/receipt-mid.jpg"
+    },
+    {
+      "scene": "receipt",
+      "position": "ending",
+      "seconds": 100.6,
+      "file": "verification-frames/receipt-ending.jpg"
+    },
+    {
+      "scene": "close",
+      "position": "mid",
+      "seconds": 111.567,
+      "file": "verification-frames/close-mid.jpg"
+    },
+    {
+      "scene": "close",
+      "position": "ending",
+      "seconds": 121.533,
+      "file": "verification-frames/close-ending.jpg"
+    }
+  ],
+  "downloadIntegrity": "pending upload"
+}
